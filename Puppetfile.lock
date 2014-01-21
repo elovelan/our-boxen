@@ -29,11 +29,6 @@ GITHUBTARBALL
     evernote (2.0.4)
 
 GITHUBTARBALL
-  remote: boxen/puppet-fitbit
-  specs:
-    fitbit (1.0.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-foreman
   specs:
     foreman (1.1.0)
@@ -149,6 +144,11 @@ GITHUBTARBALL
     lastpass (1.1.1)
 
 GITHUBTARBALL
+  remote: mxie/puppet-fitbit_connect
+  specs:
+    fitbit_connect (0.0.1)
+
+GITHUBTARBALL
   remote: puppetlabs/puppetlabs-inifile
   specs:
     inifile (1.0.0)
@@ -164,7 +164,7 @@ DEPENDENCIES
   cord (= 1.0.0)
   dnsmasq (= 1.0.1)
   evernote (= 2.0.4)
-  fitbit (= 1.0.0)
+  fitbit_connect (= 0.0.1)
   foreman (= 1.1.0)
   gcc (= 2.0.100)
   git (= 1.3.7)

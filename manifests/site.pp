@@ -69,7 +69,7 @@ node default {
   include evernote
   include vagrant
   include cord
-  include fitbit
+  include fitbit_connect
   include lastpass
   include java
 
