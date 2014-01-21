@@ -68,6 +68,10 @@ node default {
   include sourcetree
   include evernote
   include vagrant
+  include cord
+  include fitbit
+  include lastpass
+  include java
 
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
