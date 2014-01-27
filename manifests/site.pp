@@ -72,6 +72,10 @@ node default {
   include fitbit_connect
   include lastpass
   include java
+  include googlevoiceandvideoplugin
+  include xz
+  include adobe_reader
+  include googledrive
 
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
