@@ -97,6 +97,11 @@ node default {
      version => '2.1.0',
   }
 
+  # rubygems
+  package { 'veewee':
+    provider => 'gem'
+  }
+
   # common, useful packages
   package {
     [
