@@ -93,6 +93,11 @@ node default {
   #include nodejs::v0_8
   include nodejs::v0_10_21
 
+  class { 'nodejs::global': version => 'v0.10.21' }
+
+  nodejs::module { 'grunt-cli':
+    node_version => 'v0.10'
+  }
   # default ruby versions
   #include ruby::1_8_7
   #include ruby::1_9_2
