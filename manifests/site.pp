@@ -72,12 +72,17 @@ node default {
   include fitbit_connect
   include lastpass
   include java
+  include java6
   include googlevoiceandvideoplugin
   include xz
   include adobe_reader
   include googledrive
   include virtualbox
 
+  class { 'intellij':
+   version => "12.1.6",
+   edition => "ultimate",
+  }
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
   #  fail('Please enable full disk encryption and try again')
