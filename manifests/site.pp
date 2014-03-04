@@ -76,6 +76,7 @@ node default {
   include xz
   include adobe_reader
   include googledrive
+  include virtualbox
 
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {

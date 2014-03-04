@@ -72,3 +72,4 @@ github "googlevoiceandvideoplugin", "1.0.0", :repo => "phase2/puppet-googlevoice
 github "xz",              "1.0.0"
 github "adobe_reader",    "1.1.0"
 github "googledrive",     "1.0.2"
+github "virtualbox",      "1.0.10"
