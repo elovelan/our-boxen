@@ -98,22 +98,20 @@ node default {
   nodejs::module { 'grunt-cli':
     node_version => 'v0.10'
   }
+
   # default ruby versions
-  #include ruby::1_8_7
-  #include ruby::1_9_2
-  #include ruby::1_9_3
-  #include ruby::2_0_0
+  #ruby::version { '1.9.3': }
+  #ruby::version { '2.0.0': }
+  ruby::version { '2.1.0': }
 
-  $rubyver = '2.1.0'  
+  $default_ruby_ver = '2.1.0'
 
-  class { 'ruby::global':
-    version => $rubyver
-  }
+  class { 'ruby::global': version => $default_ruby_ver }
 
   # rubygems
   ruby::gem { "veewee for ${rubyver}":
     gem     => 'veewee',
-    ruby    => $rubyver
+    ruby    => $default_ruby_ver
   }
 
   # common, useful packages
