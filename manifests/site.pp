@@ -92,14 +92,17 @@ node default {
   #include ruby::1_9_2
   #include ruby::1_9_3
   #include ruby::2_0_0
-  
-  class { 'ruby::global': 
-     version => '2.1.0',
+
+  $rubyver = '2.1.0'  
+
+  class { 'ruby::global':
+    version => $rubyver
   }
 
   # rubygems
-  package { 'veewee':
-    provider => 'gem'
+  ruby::gem { "veewee for ${rubyver}":
+    gem     => 'veewee',
+    ruby    => $rubyver
   }
 
   # common, useful packages
