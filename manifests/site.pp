@@ -78,6 +78,7 @@ node default {
   include adobe_reader
   include googledrive
   include virtualbox
+  include hipchat
 
   class { 'intellij':
    version => "12.1.6",
@@ -119,7 +120,8 @@ node default {
     [
       'ack',
       'findutils',
-      'gnu-tar'
+      'gnu-tar',
+      'unrar'
     ]:
   }
 
