@@ -94,10 +94,18 @@ node default {
   #include nodejs::v0_8
   include nodejs::v0_10_21
 
-  class { 'nodejs::global': version => 'v0.10.21' }
+  $default_nodejs_ver = 'v0.10.21'
 
-  nodejs::module { 'grunt-cli':
-    node_version => 'v0.10'
+  class { 'nodejs::global': version => $default_nodejs_ver }
+
+  nodejs::module { 'grunt-cli': 
+    node_version => $default_nodejs_ver
+  }
+  nodejs::module { 'yo': 
+    node_version => $default_nodejs_ver
+  }
+  nodejs::module { 'generator-chrome-extension':
+    node_version => $default_nodejs_ver
   }
 
   # default ruby versions
