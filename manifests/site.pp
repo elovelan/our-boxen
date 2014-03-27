@@ -118,8 +118,12 @@ node default {
   class { 'ruby::global': version => $default_ruby_ver }
 
   # rubygems
-  ruby::gem { "veewee for ${rubyver}":
+  ruby::gem { "veewee":
     gem     => 'veewee',
+    ruby    => $default_ruby_ver
+  }
+  ruby::gem { "compass":
+    gem     => 'compass',
     ruby    => $default_ruby_ver
   }
 
