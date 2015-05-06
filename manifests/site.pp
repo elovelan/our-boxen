@@ -92,39 +92,45 @@ node default {
   # node versions
   #include nodejs::v0_6
   #include nodejs::v0_8
-  include nodejs::v0_10_21
+  #include nodejs::v0_10_21
+  include nodejs::v0_10
 
-  $default_nodejs_ver = 'v0.10.21'
+  $default_nodejs_ver = 'v0.10'
 
   class { 'nodejs::global': version => $default_nodejs_ver }
 
-  nodejs::module { 'grunt-cli': 
-    node_version => $default_nodejs_ver
-  }
-  nodejs::module { 'yo': 
-    node_version => $default_nodejs_ver
-  }
-  nodejs::module { 'generator-chrome-extension':
+  nodejs::module {[
+                    grunt-cli,
+                    yo,
+                    generator-chrome-extension
+                  ]:
     node_version => $default_nodejs_ver
   }
 
   # default ruby versions
   #ruby::version { '1.9.3': }
-  #ruby::version { '2.0.0': }
-  ruby::version { '2.1.0': }
-  #ruby::version { '2.1.1': }
+  #ruby::version { '2.1.0': }
+  ruby::version { '2.1.1': }
 
-  $default_ruby_ver = '2.1.0'
+  $default_ruby_ver = '2.1.1'
 
   class { 'ruby::global': version => $default_ruby_ver }
 
   # rubygems
-  ruby::gem { "veewee":
+  ruby::gem { "veewee for ${default_ruby_ver}":
     gem     => 'veewee',
     ruby    => $default_ruby_ver
   }
-  ruby::gem { "compass":
+  ruby::gem { "compass for ${default_ruby_ver}":
     gem     => 'compass',
+    ruby    => $default_ruby_ver
+  }
+  ruby::gem { "netrc for ${default_ruby_ver}":
+    gem     => 'netrc',
+    ruby    => $default_ruby_ver
+  }
+  ruby::gem { "heroku-api for ${default_ruby_ver}":
+    gem     => 'heroku-api',
     ruby    => $default_ruby_ver
   }
 
