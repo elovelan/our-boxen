@@ -79,6 +79,7 @@ node default {
   include googledrive
   include virtualbox
   include hipchat
+  include heroku
 
   class { 'intellij':
    version => "12.1.6",
