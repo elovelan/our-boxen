@@ -58,7 +58,10 @@ node default {
   include hub
   include nginx
 
-  # mine
+  # Eric's providers
+  #include brewcask
+
+  # Eric's apps
   include skype
   include chrome
   include ntfs_3g
@@ -80,11 +83,19 @@ node default {
   include virtualbox
   include hipchat
   include heroku
+  #include postgresql
 
   class { 'intellij':
-   version => "12.1.6",
-   edition => "ultimate",
+    version => "12.1.6",
+    edition => "ultimate",
   }
+
+  #postgresql::db { 'mydb': }
+
+  #package { 'silverlight':
+  #  provider => 'brewcask'
+  #}
+
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
   #  fail('Please enable full disk encryption and try again')
