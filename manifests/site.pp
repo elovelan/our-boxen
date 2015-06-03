@@ -11,7 +11,7 @@ Exec {
     "${boxen::config::home}/rbenv/shims",
     "${boxen::config::home}/rbenv/bin",
     "${boxen::config::home}/rbenv/plugins/ruby-build/bin",
-    "${boxen::config::home}/homebrew/bin",
+    "${boxen::config::homebrewdir}/bin",
     '/usr/bin',
     '/bin',
     '/usr/sbin',
@@ -58,9 +58,6 @@ node default {
   include hub
   include nginx
 
-  # Eric's providers
-  #include brewcask
-
   # Eric's apps
   include skype
   include chrome
@@ -102,30 +99,29 @@ node default {
   #}
 
   # node versions
-  #include nodejs::v0_6
-  #include nodejs::v0_8
-  #include nodejs::v0_10_21
-  include nodejs::v0_10
+  # nodejs::version { 'v0.6': }
+  # nodejs::version { 'v0.8': }
+  nodejs::version { 'v0.10': }
 
   $default_nodejs_ver = 'v0.10'
-
   class { 'nodejs::global': version => $default_nodejs_ver }
 
-  nodejs::module {[
-                    grunt-cli,
-                    yo,
-                    generator-chrome-extension
-                  ]:
-    node_version => $default_nodejs_ver
+  nodejs::module {
+    [
+      grunt-cli,
+      yo,
+      generator-chrome-extension
+    ]: node_version => $default_nodejs_ver
   }
 
   # default ruby versions
-  #ruby::version { '1.9.3': }
-  #ruby::version { '2.1.0': }
-  ruby::version { '2.1.1': }
+  # ruby::version { '1.9.3': }
+  # ruby::version { '2.0.0': }
+  # ruby::version { '2.1.0': }
+  # ruby::version { '2.1.1': }
+  ruby::version { '2.1.2': }
 
-  $default_ruby_ver = '2.1.1'
-
+  $default_ruby_ver = '2.1.2'
   class { 'ruby::global': version => $default_ruby_ver }
 
   # rubygems
@@ -152,7 +148,7 @@ node default {
       'ack',
       'findutils',
       'gnu-tar',
-      'unrar'
+      'unrar',
     ]:
   }
 
