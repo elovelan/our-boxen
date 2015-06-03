@@ -5,25 +5,55 @@
 # environment.
 
 # Shortcut for a module from GitHub's boxen organization
-def github(name, *args)
-  options ||= if args.last.is_a? Hash
-    args.last
-  else
-    {}
-  end
-
-  if path = options.delete(:path)
-    mod name, :path => path
-  else
-    version = args.first
-    options[:repo] ||= "boxen/puppet-#{name}"
-    mod name, version, :github_tarball => options[:repo]
-  end
-end
+# def github(name, *args)
+#   options ||= if args.last.is_a? Hash
+#     args.last
+#   else
+#     {}
+#   end
+#
+#   if path = options.delete(:path)
+#     mod name, :path => path
+#   else
+#     version = args.first
+#     options[:repo] ||= "boxen/puppet-#{name}"
+#     mod name, version, :github_tarball => options[:repo]
+#   end
+# end
 
 # Shortcut for a module under development
 def dev(name, *args)
   mod "puppet-#{name}", :path => "#{ENV['HOME']}/src/boxen/puppet-#{name}"
+end
+
+# Eric's custom
+# TODO: unit test
+def github_shared(name, args)
+  options ||=
+    if args.last.is_a? Hash
+      args.last
+    else
+      {}
+    end
+
+  if path = options.delete(:path)
+    mod name, :path => path
+  else
+    source = yield (options[:repo] || "boxen/puppet-#{name}")
+    if args.first.is_a? String
+      mod name, (version = args.first), source
+    else
+      mod name, source
+    end
+  end
+end
+
+def github(name, *args)
+  github_shared(name, args) { |repo| { github_tarball: repo } }
+end
+
+def github_source(name, *args)
+  github_shared("puppet-#{name}", args) { |repo| { git: "git@github.com:#{repo}.git" } }
 end
 
 # Includes many of our custom types and providers, as well as global
@@ -66,21 +96,21 @@ github "xquartz",     "1.2.1"
 # github "redis",       "3.1.0"
 # github "sysctl",      "1.0.1"
 
-github "chrome",          "1.1.2"
-github "evernote",        "2.0.4"
-github "vmware_fusion",   "1.1.0"
-github "tmux",            "1.0.2"
-github "vagrant",         "3.0.3"
-github "sourcetree",      "1.0.0"
-github "ntfs_3g",         "1.0.0", :repo => "MoOx/puppet-ntfs_3g"
-github "skype",           "1.0.8"
-github "spotify",         "1.0.1"
-github "lastpass",        "1.1.1", :repo => "elovelan/puppet-lastpass"
-github "java",            "1.2.0"
-github "googlevoiceandvideoplugin", "1.0.0", :repo => "phase2/puppet-googlevoiceandvideoplugin"
-github "xz",              "1.0.0"
-github "adobe_reader",    "1.1.0"
-github "googledrive",     "1.0.2"
-github "virtualbox",      "1.0.10"
-github "heroku",          "2.0.0"
-github "postgresql",      "3.0.3"
+github "chrome"
+github "evernote"
+github "vmware_fusion"
+github "tmux"
+github "vagrant"
+github "sourcetree"
+github "ntfs_3g", :repo => "MoOx/puppet-ntfs_3g"
+github "skype"
+github "spotify"
+github "lastpass", :repo => "elovelan/puppet-lastpass"
+github "java"
+github "googlevoiceandvideoplugin", :repo => "phase2/puppet-googlevoiceandvideoplugin"
+github "xz"
+github "adobe_reader"
+github "googledrive"
+github "virtualbox"
+github "heroku"
+github "postgresql"
