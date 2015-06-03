@@ -131,6 +131,7 @@ node default {
 
   package {
     [
+      'rpm',
       'unrar',
     ]:
   }
