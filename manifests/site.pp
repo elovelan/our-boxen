@@ -108,12 +108,18 @@ node default {
   include virtualbox
   include heroku
   #include postgresql
+  include ynab
+  include flowdock
+  include atom
+  include mumble
+  #include docker
+  include flux
 
   #postgresql::db { 'mydb': }
 
-  #package { 'silverlight':
-  #  provider => 'brewcask'
-  #}
+  package { 'silverlight':
+    provider => 'brewcask'
+  }
 
   nodejs::version { 'v0.10': }
   $default_nodejs_ver = 'v0.10'
