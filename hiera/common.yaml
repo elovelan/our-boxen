@@ -1,0 +1,24 @@
+---
+# See https://github.com/boxen/puppet-ruby for docs
+"ruby::global::version": "2.2"
+
+# need to use create_resources for this to work
+# ruby::version:
+#   - 2.2
+
+# ruby::rbenv_plugins:
+#   rbenv-vars:
+#     ensure: v1.0.0
+#     source: sstephenson/rbenv-vars
+#   ruby-build:
+#     ensure: v20131225.1
+#     source: sstephenson/ruby-build
+
+
+ruby::version::alias:
+  # a version that looks like a number must be quoted!
+  "2.1": 2.1.6-github
+  "2.2": 2.2.2
+
+# See https://github.com/boxen/puppet-java for docs
+# java::update_version: 51

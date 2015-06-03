@@ -125,9 +125,9 @@ node default {
   $default_nodejs_ver = 'v0.10'
   class { 'nodejs::global': version => $default_nodejs_ver }
 
-  ruby::version { '2.1.2': }
-  $default_ruby_ver = '2.1.2'
-  class { 'ruby::global': version => $default_ruby_ver }
+  ruby::version { ['2.1','2.2']: }
+  # this will set the default ruby (has to come AFTER previous line)
+  include ruby::global
 
   package {
     [
