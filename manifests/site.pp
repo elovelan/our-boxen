@@ -99,24 +99,15 @@ node default {
   include sourcetree
   include evernote
   include vagrant
-  include cord
-  include fitbit_connect
   include lastpass
-  include java
-  include java6
+  #include java
   include googlevoiceandvideoplugin
   include xz
   include adobe_reader
   include googledrive
   include virtualbox
-  include hipchat
   include heroku
   #include postgresql
-
-  class { 'intellij':
-    version => "12.1.6",
-    edition => "ultimate",
-  }
 
   #postgresql::db { 'mydb': }
 
@@ -128,35 +119,9 @@ node default {
   $default_nodejs_ver = 'v0.10'
   class { 'nodejs::global': version => $default_nodejs_ver }
 
-  nodejs::module {
-    [
-      grunt-cli,
-      yo,
-      generator-chrome-extension
-    ]: node_version => $default_nodejs_ver
-  }
-
   ruby::version { '2.1.2': }
   $default_ruby_ver = '2.1.2'
   class { 'ruby::global': version => $default_ruby_ver }
-
-  # rubygems
-  ruby::gem { "veewee for ${default_ruby_ver}":
-    gem     => 'veewee',
-    ruby    => $default_ruby_ver
-  }
-  ruby::gem { "compass for ${default_ruby_ver}":
-    gem     => 'compass',
-    ruby    => $default_ruby_ver
-  }
-  ruby::gem { "netrc for ${default_ruby_ver}":
-    gem     => 'netrc',
-    ruby    => $default_ruby_ver
-  }
-  ruby::gem { "heroku-api for ${default_ruby_ver}":
-    gem     => 'heroku-api',
-    ruby    => $default_ruby_ver
-  }
 
   package {
     [

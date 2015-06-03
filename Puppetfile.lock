@@ -24,11 +24,6 @@ GITHUBTARBALL
     chrome (1.1.2)
 
 GITHUBTARBALL
-  remote: boxen/puppet-cord
-  specs:
-    cord (1.0.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-dnsmasq
   specs:
     dnsmasq (2.0.1)
@@ -69,11 +64,6 @@ GITHUBTARBALL
     heroku (2.0.0)
 
 GITHUBTARBALL
-  remote: boxen/puppet-hipchat
-  specs:
-    hipchat (1.1.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-homebrew
   specs:
     homebrew (1.12.0)
@@ -82,11 +72,6 @@ GITHUBTARBALL
   remote: boxen/puppet-hub
   specs:
     hub (1.4.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-intellij
-  specs:
-    intellij (1.4.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-java
@@ -189,16 +174,6 @@ GITHUBTARBALL
     lastpass (1.1.1)
 
 GITHUBTARBALL
-  remote: loyal3/puppet-java6
-  specs:
-    java6 (0.0.3)
-
-GITHUBTARBALL
-  remote: mxie/puppet-fitbit_connect
-  specs:
-    fitbit_connect (0.0.1)
-
-GITHUBTARBALL
   remote: phase2/puppet-googlevoiceandvideoplugin
   specs:
     googlevoiceandvideoplugin (1.0.0)
@@ -223,10 +198,8 @@ DEPENDENCIES
   boxen (= 3.10.4)
   brewcask (= 0.0.6)
   chrome (= 1.1.2)
-  cord (= 1.0.0)
   dnsmasq (= 2.0.1)
   evernote (= 2.0.4)
-  fitbit_connect (= 0.0.1)
   foreman (= 1.2.0)
   gcc (= 2.2.1)
   git (= 2.7.9)
@@ -234,13 +207,10 @@ DEPENDENCIES
   googledrive (= 1.0.2)
   googlevoiceandvideoplugin (= 1.0.0)
   heroku (= 2.0.0)
-  hipchat (= 1.1.0)
   homebrew (= 1.12.0)
   hub (= 1.4.1)
   inifile (= 1.1.1)
-  intellij (= 1.4.0)
   java (= 1.2.0)
-  java6 (= 0.0.3)
   lastpass (= 1.1.1)
   module_data (= 0.0.3)
   nginx (= 1.4.5)
