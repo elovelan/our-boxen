@@ -89,6 +89,8 @@ node default {
     target => $boxen::config::repodir
   }
 
+  # Eric's stuff (split to another file!)
+  
   # Eric's apps
   include skype
   include chrome
@@ -100,7 +102,6 @@ node default {
   include evernote
   include vagrant
   include lastpass
-  #include java
   include googlevoiceandvideoplugin
   include xz
   include adobe_reader
@@ -117,9 +118,28 @@ node default {
 
   #postgresql::db { 'mydb': }
 
-  package { 'silverlight':
-    provider => 'brewcask'
+  package {
+    [
+      'silverlight',
+      'visual-studio-code',
+      'mediainfo',
+      'mplayer-osx-extended',
+      'citrix-receiver',
+      'smcfancontrol',
+      'logitech-harmony',
+      # 'tomighty',
+      'box-sync',
+      'dropbox',
+      'flash',
+      'usb-overdrive',
+      'java',
+    ]: provider => 'brewcask'
   }
+
+  # Other apps:
+  # BodyMedia
+  # Synergy
+  # Akamai NetSession
 
   nodejs::version { 'v0.10': }
   $default_nodejs_ver = 'v0.10'
@@ -131,6 +151,12 @@ node default {
 
   package {
     [
+      # requirements for graphviz
+      'swig',
+      'gettext',
+      'pkg-config',
+      'graphviz',
+      # other packages
       'rpm',
       'unrar',
     ]:

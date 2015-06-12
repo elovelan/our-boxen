@@ -99,11 +99,6 @@ GITHUBTARBALL
     hub (1.4.1)
 
 GITHUBTARBALL
-  remote: boxen/puppet-java
-  specs:
-    java (1.2.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-mumble
   specs:
     mumble (1.0.5)
@@ -244,7 +239,6 @@ DEPENDENCIES
   homebrew (= 1.12.0)
   hub (= 1.4.1)
   inifile (= 1.1.1)
-  java (>= 0)
   lastpass (>= 0)
   module_data (= 0.0.3)
   mumble (>= 0)
