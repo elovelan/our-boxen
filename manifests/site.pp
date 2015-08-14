@@ -90,50 +90,52 @@ node default {
   }
 
   # Eric's stuff (split to another file!)
-  
+
   # Eric's apps
-  include skype
-  include chrome
-  include ntfs_3g
-  include vmware_fusion
-  include spotify
-  include tmux
-  include sourcetree
-  include evernote
   include vagrant
-  include lastpass
-  include googlevoiceandvideoplugin
-  include xz
-  include adobe_reader
-  include googledrive
-  include virtualbox
   include heroku
   #include postgresql
-  include ynab
-  include flowdock
   include atom
-  include mumble
   #include docker
-  include flux
 
   #postgresql::db { 'mydb': }
 
   package {
     [
       'silverlight',
+      'google-chrome',
+      'google-drive',
+      'mumble',
+      'skype',
+      'sourcetree',
+      'spotify',
+      'flowdock',
       'visual-studio-code',
+      'flux',
       'mediainfo',
       'mplayer-osx-extended',
       'citrix-receiver',
+      'ynab',
+      'vmware-fusion',
       'smcfancontrol',
       'logitech-harmony',
       # 'tomighty',
+      'lastpass',
+      'virtualbox',
       'box-sync',
       'dropbox',
       'flash',
       'usb-overdrive',
+      'evernote',
+      'google-hangouts',
       'java',
     ]: provider => 'brewcask'
+  }
+
+  elove::brew {
+    [
+      'ntfs-3g'
+    ]: tap => 'homebrew/fuse'
   }
 
   # Other apps:
@@ -158,7 +160,19 @@ node default {
       'graphviz',
       # other packages
       'rpm',
+      'tmux',
       'unrar',
+      'xz',
     ]:
+  }
+}
+
+define elove::brew(
+  $tap,
+  $provider = 'homebrew'
+) {
+  homebrew::tap { "${tap}": } ->
+  package {
+    "${name}": provider => $provider
   }
 }
