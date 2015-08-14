@@ -1,6 +1,6 @@
 ---
 # See https://github.com/boxen/puppet-ruby for docs
-"ruby::global::version": "2.2"
+ruby::global::version: "2.2"
 
 # need to use create_resources for this to work
 # ruby::version:
@@ -8,6 +8,8 @@
 
 ruby::version::alias:
   # a version that looks like a number must be quoted!
+  "1.8": 1.8.7-p375
+  "1.9": 1.9.3-p545
   "2.1": 2.1.6-github
   "2.2": 2.2.2
 

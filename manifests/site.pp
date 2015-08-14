@@ -147,9 +147,20 @@ node default {
   $default_nodejs_ver = 'v0.10'
   class { 'nodejs::global': version => $default_nodejs_ver }
 
-  ruby::version { ['2.1','2.2']: }
+  ruby::version { ['1.8','1.9','2.1','2.2']: }
   # this will set the default ruby (has to come AFTER previous line)
   include ruby::global
+
+  ruby_gem { 'bundler':
+    gem          => 'bundler',
+    ruby_version => '*',
+  }
+  # for bundle-viz
+  # todo: loop or get ruby_version from hiera?
+  ruby_gem { 'ruby22-graphviz':
+    gem          => 'ruby-graphviz',
+    ruby_version => 2.2,
+  }
 
   package {
     [
