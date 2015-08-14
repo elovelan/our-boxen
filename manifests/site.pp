@@ -144,9 +144,14 @@ node default {
   # Synergy
   # Akamai NetSession
 
-  nodejs::version { 'v0.10': }
-  $default_nodejs_ver = 'v0.10'
-  class { 'nodejs::global': version => $default_nodejs_ver }
+  nodejs::version { 'io-2': }
+  # set default version in hiera
+  include nodejs::global
+
+  npm_module { 'yo':
+    module       => ['yo'],
+    node_version => '*',
+  }
 
   ruby::version { ['1.8','1.9','2.1','2.2']: }
   # this will set the default ruby (has to come AFTER previous line)

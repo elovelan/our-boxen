@@ -13,5 +13,12 @@ ruby::version::alias:
   "2.1": 2.1.6-github
   "2.2": 2.2.2
 
+nodejs::build::ensure: origin/master
+
+nodejs::global::version: io-2
+
+nodejs::version::alias:
+  io-2: iojs-2.3.4
+
 # See https://github.com/boxen/puppet-java for docs
 # java::update_version: 51
