@@ -143,6 +143,15 @@ node default {
   # BodyMedia
   # Synergy
   # Akamai NetSession
+  # Mono framework
+  # Fiddler
+  # Azure cli
+  # DirecTV player
+  # onedrive
+  # language-puppet for atom
+  # network link conditioner aka Hardware IO Tools for Xcode
+  # gfxCardStatus
+  # Hardware Monitor Lite
 
   nodejs::version { 'io-2': }
   # set default version in hiera
@@ -162,7 +171,7 @@ node default {
     ruby_version => '*',
   }
   # for bundle-viz
-  # todo: loop or get ruby_version from hiera?
+  # todo: loop or get ruby::version from hiera but exclude 1.8 (not supported)
   ruby_gem { 'ruby22-graphviz':
     gem          => 'ruby-graphviz',
     ruby_version => 2.2,
