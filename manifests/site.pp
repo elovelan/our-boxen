@@ -129,6 +129,7 @@ node default {
       'evernote',
       'google-hangouts',
       'java',
+      'rescuetime',
     ]: provider => 'brewcask'
   }
 
