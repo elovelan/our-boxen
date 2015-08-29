@@ -185,6 +185,7 @@ node default {
       'pkg-config',
       'graphviz',
       # other packages
+      'android-platform-tools',
       'rpm',
       'tmux',
       'unrar',
