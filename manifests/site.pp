@@ -130,6 +130,10 @@ node default {
       'google-hangouts',
       'java',
       'rescuetime',
+      'gfxcardstatus',
+      'temperature-monitor',
+      'fiddler',
+      'azure-cli',
     ]: provider => 'brewcask'
   }
 
@@ -143,14 +147,10 @@ node default {
   # BodyMedia
   # Synergy
   # Akamai NetSession
-  # Mono framework
-  # Fiddler
-  # Azure cli
   # DirecTV player
   # onedrive
   # language-puppet for atom
   # network link conditioner aka Hardware IO Tools for Xcode
-  # gfxCardStatus
   # Hardware Monitor Lite
 
   nodejs::version { 'io-2': }
