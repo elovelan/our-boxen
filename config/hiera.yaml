@@ -9,8 +9,11 @@
 
 :backends:
   - yaml
+#  - eyaml
 :yaml:
   :datadir: "%{::boxen_home}/repo/hiera"
+#:eyaml:
+#  :datadir: "%{::boxen_home}/repo/hiera"
 :hierarchy:
   - "users/%{github_login}"
   - common

@@ -91,12 +91,15 @@ node default {
 
   # Eric's stuff (split to another file!)
 
+  # Ensure brew casks is installed
+  include brewcask
+
   # Eric's apps
   include vagrant
   include heroku
   #include postgresql
   include atom
-  #include docker
+  include docker
 
   #postgresql::db { 'mydb': }
 
@@ -114,9 +117,10 @@ node default {
       'flux',
       'mediainfo',
       'mplayer-osx-extended',
-      'citrix-receiver',
+      # installed manually due to version requirement
+      # 'citrix-receiver',
       'ynab',
-      'vmware-fusion',
+      'vmware-fusion', # auto
       'smcfancontrol',
       'logitech-harmony',
       # 'tomighty',
@@ -130,10 +134,12 @@ node default {
       'google-hangouts',
       'java',
       'rescuetime',
-      'gfxcardstatus',
-      'temperature-monitor',
       'fiddler',
       'azure-cli',
+      'android-file-transfer',
+      'steam',
+      'jdownloader',
+      'vlc'
     ]: provider => 'brewcask'
   }
 
@@ -152,6 +158,7 @@ node default {
   # language-puppet for atom
   # network link conditioner aka Hardware IO Tools for Xcode
   # Hardware Monitor Lite
+  # atom packages
 
   nodejs::version { 'io-2': }
   # set default version in hiera
@@ -172,9 +179,20 @@ node default {
   }
   # for bundle-viz
   # todo: loop or get ruby::version from hiera but exclude 1.8 (not supported)
-  ruby_gem { 'ruby22-graphviz':
+  ruby_gem { 'ruby-graphviz22':
     gem          => 'ruby-graphviz',
-    ruby_version => 2.2,
+    ruby_version => '2.2',
+  }
+
+  ruby_gem { 'puppet-lint':
+    gem          => 'puppet-lint',
+    ruby_version => '2.2',
+    version      => '>=1.1'
+  }
+
+  ruby_gem { 'hiera-eyaml-system':
+    gem          => 'hiera-eyaml',
+    ruby_version => 'system',
   }
 
   package {
@@ -187,11 +205,50 @@ node default {
       # other packages
       'android-platform-tools',
       'rpm',
+      'md5sha1sum',
       'tmux',
       'unrar',
       'xz',
+      'dnvm',
     ]:
   }
+
+  ini_setting { 'Citrix KeyboardLayout':
+    ensure            => present,
+    section           => 'WFClient',
+    key_val_separator => '=',
+    setting           => 'KeyboardLayout',
+    value             => 'US',
+    path              => "/Users/elovelan/Library/Application Support/Citrix \
+Receiver/Config",
+  }
+
+# TODO: this is not yet supported by gfxcardstatus
+#   file { 'gfxcardstatus launchd plist':
+#     ensure  => present,
+#     path    => '/Library/LaunchAgents/com.codykrieger.gfxCardStatus',
+#     content => '<?xml version="1.0" encoding="UTF-8"?>
+# <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+#   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+# <plist version="1.0">
+# <dict>
+#   <key>Label</key>
+#     <string>com.codykrieger.gfxCardStatus</string>
+#   <key>ProgramArguments</key>
+#     <array>
+# 	    <string>/usr/bin/open</string>
+# 	    <string>/Users/elovelan/Applications/gfxCardStatus.app</string>
+# 	    <string>--integrated</string>
+# 	  </array>
+#   <key>RunAtLoad</key>
+# 	  <true/>
+# </dict>
+# </plist>
+# '
+# TODO: set a dep on the gfxCardStatus package
+#   }
+#   ~>
+#   service { 'com.codykrieger.gfxCardStatus': }
 }
 
 define elove::brew(

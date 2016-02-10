@@ -22,3 +22,9 @@ nodejs::version::alias:
 
 # See https://github.com/boxen/puppet-java for docs
 # java::update_version: 51
+
+# Keep Docker up-to-date
+docker::compose::version: latest
+docker::engine::version: latest
+docker::machine::version: latest
+docker::swarm::version: latest

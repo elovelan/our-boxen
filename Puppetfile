@@ -102,6 +102,7 @@ github "heroku"
 github "postgresql"
 github "atom"
 github "docker"
+github "dotfiles",   :repo => "jamieconnolly/puppet-dotfiles"
 
 # Use newer version of nodejs for io.js support
 github "nodejs", ">=5.0.0"
