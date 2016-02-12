@@ -116,9 +116,7 @@ node default {
       'flux',
       'mediainfo',
       'mplayer-osx-extended',
-      # installed manually due to version requirement
-      # 'citrix-receiver',
-      'ynab',
+      'citrix-receiver',
       'vmware-fusion', # auto
       'smcfancontrol',
       'logitech-harmony',
@@ -138,7 +136,8 @@ node default {
       'android-file-transfer',
       'steam',
       'jdownloader',
-      'vlc'
+      'vlc',
+      'transmission',
     ]: provider => 'brewcask'
   }
 
@@ -168,7 +167,7 @@ node default {
     node_version => '*',
   }
 
-  ruby::version { ['1.8','1.9','2.1','2.2']: }
+  ruby::version { ['1.8','1.9','2.0','2.1','2.2']: }
   # this will set the default ruby (has to come AFTER previous line)
   include ruby::global
 
@@ -180,18 +179,18 @@ node default {
   # todo: loop or get ruby::version from hiera but exclude 1.8 (not supported)
   ruby_gem { 'ruby-graphviz22':
     gem          => 'ruby-graphviz',
-    ruby_version => '2.2',
+    ruby_version => 2.2,
   }
 
   ruby_gem { 'puppet-lint':
     gem          => 'puppet-lint',
-    ruby_version => '2.2',
+    ruby_version => 2.2,
     version      => '>=1.1'
   }
 
   ruby_gem { 'hiera-eyaml-system':
     gem          => 'hiera-eyaml',
-    ruby_version => 'system',
+    ruby_version => 2.0,
   }
 
   package {

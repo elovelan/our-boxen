@@ -8,10 +8,12 @@ ruby::global::version: "2.2"
 
 ruby::version::alias:
   # a version that looks like a number must be quoted!
-  "1.8": 1.8.7-p375
-  "1.9": 1.9.3-p545
+  "1.8": 1.8.7
+  "1.9": 1.9.3
+  "2.0": 2.0.0-github
   "2.1": 2.1.6-github
-  "2.2": 2.2.2
+  "2.2": 2.2.4
+  "2.3": 2.3.0
 
 nodejs::build::ensure: origin/master
 
