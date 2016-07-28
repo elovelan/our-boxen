@@ -99,6 +99,7 @@ node default {
   #include postgresql
   include atom
   include docker
+  include android::sdk
 
   #postgresql::db { 'mydb': }
 
@@ -202,7 +203,6 @@ node default {
       'pkg-config',
       'graphviz',
       # other packages
-      'android-platform-tools',
       'rpm',
       'md5sha1sum',
       'tmux',
