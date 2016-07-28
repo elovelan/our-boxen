@@ -30,3 +30,5 @@ docker::compose::version: latest
 docker::engine::version: latest
 docker::machine::version: latest
 docker::swarm::version: latest
+
+dnsmasq::tld:  elove

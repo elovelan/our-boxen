@@ -138,6 +138,7 @@ node default {
       'jdownloader',
       'vlc',
       'transmission',
+      'kitematic'
     ]: provider => 'brewcask'
   }
 
